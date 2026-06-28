@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Олег Игнатьев | Репетитор по английскому</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <title>Игнатьев Олег | Репетитор по английскому</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <style>
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -14,11 +15,9 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, #f0f7ff 0%, #ffffff 100%);
-            color: #1a2a3a;
+            background: #f8faff;
+            color: #1a1a2e;
             line-height: 1.5;
-            scroll-behavior: smooth; /* fallback */
-            min-height: 100vh;
             overflow-x: hidden;
         }
 
@@ -30,238 +29,580 @@
             z-index: 2;
         }
 
-        /* ===== ПАРАЛЛАКС-КРУГИ (фон) ===== */
-        .parallax-circle {
+        /* ===== ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ (стиль Skyeng) ===== */
+        .brand-line {
+            height: 4px;
+            width: 80px;
+            background: linear-gradient(90deg, #009EE4, #6FE4FF);
+            border-radius: 4px;
+            margin: 16px 0 24px 0;
+        }
+
+        .brand-line-center {
+            height: 4px;
+            width: 80px;
+            background: linear-gradient(90deg, #009EE4, #6FE4FF);
+            border-radius: 4px;
+            margin: 16px auto 24px auto;
+        }
+
+        /* ===== ДИНАМИЧЕСКИЙ ФОН ===== */
+        .bg-accent-shape {
             position: fixed;
             border-radius: 50%;
-            background: rgba(74, 144, 217, 0.06);
             pointer-events: none;
             z-index: 0;
-            will-change: transform;
-            transition: transform 0.1s ease-out;
+            opacity: 0.4;
+            filter: blur(80px);
         }
-        .circle1 {
+        .shape1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            background: #009EE4;
+        }
+        .shape2 {
             width: 300px;
             height: 300px;
-            top: 10%;
-            left: 5%;
+            bottom: 0;
+            left: -50px;
+            background: #FFB53D;
         }
-        .circle2 {
+        .shape3 {
             width: 200px;
             height: 200px;
-            bottom: 15%;
-            right: 8%;
-            background: rgba(74, 144, 217, 0.05);
-        }
-        .circle3 {
-            width: 150px;
-            height: 150px;
             top: 50%;
-            left: 70%;
-            background: rgba(74, 144, 217, 0.04);
+            left: 50%;
+            background: #DD127D;
+            opacity: 0.2;
         }
 
         /* ===== ШАПКА ===== */
         .header {
-            padding: 16px 0 10px;
-            background: rgba(255, 255, 255, 0.7);
+            padding: 16px 0;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(74, 144, 217, 0.15);
+            border-bottom: 2px solid rgba(0, 158, 228, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: background 0.3s;
+            transition: background 0.3s, box-shadow 0.3s;
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
         .header-inner {
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .header-top {
-            display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
         }
 
         .logo h1 {
-            font-size: 1.9rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 900;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #1a3a5a, #4a90d9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #1a1a2e;
+        }
+        .logo h1 span {
+            color: #009EE4;
         }
         .logo p {
             font-size: 0.8rem;
-            color: #4a6a8a;
-            letter-spacing: 0.3px;
-            margin-top: 2px;
-        }
-
-        .contact-badge {
-            display: flex;
-            gap: 12px;
-        }
-        .contact-badge a {
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.85rem;
-            padding: 8px 18px;
-            border-radius: 40px;
-            background: rgba(74, 144, 217, 0.08);
-            border: 1px solid rgba(74, 144, 217, 0.15);
-            color: #1a3a5a;
-            transition: 0.25s ease;
-        }
-        .contact-badge a:hover {
-            background: rgba(74, 144, 217, 0.15);
-            border-color: #4a90d9;
-            color: #0a2a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 144, 217, 0.15);
+            color: #4a4a6a;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             display: flex;
+            gap: 8px;
             flex-wrap: wrap;
-            gap: 6px 12px;
-            margin-top: 4px;
         }
         .nav-links a {
-            color: #2a4a6a;
+            color: #1a1a2e;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
-            padding: 6px 16px;
+            padding: 8px 18px;
             border-radius: 40px;
             transition: 0.25s;
-            position: relative;
-            border: 1px solid transparent;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #4a90d9;
-            transition: 0.3s ease;
-            transform: translateX(-50%);
-            border-radius: 4px;
         }
         .nav-links a:hover {
-            color: #0a2a4a;
-            border-color: rgba(74, 144, 217, 0.2);
-            background: rgba(74, 144, 217, 0.05);
+            background: rgba(0, 158, 228, 0.08);
+            color: #009EE4;
         }
-        .nav-links a:hover::after {
-            width: 60%;
+
+        .header-cta {
+            background: #009EE4;
+            color: #fff !important;
+            padding: 10px 24px !important;
+            border-radius: 40px !important;
+            font-weight: 700 !important;
+            transition: 0.3s !important;
+        }
+        .header-cta:hover {
+            background: #0080C1 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 158, 228, 0.3);
         }
 
         /* ===== ГЕРОЙ ===== */
         .hero {
-            padding: 70px 0 50px;
+            padding: 60px 0 40px;
             position: relative;
         }
         .hero-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
         }
         .hero-text {
             flex: 1.2;
-            opacity: 0;
-            animation: fadeUp 0.9s ease-out forwards;
+        }
+        .hero-text .badge {
+            display: inline-block;
+            background: rgba(0, 158, 228, 0.08);
+            color: #009EE4;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 16px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
         }
         .hero-text h2 {
-            font-size: 3.2rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
             line-height: 1.1;
             letter-spacing: -0.02em;
-            color: #0a2a4a;
+            color: #1a1a2e;
+        }
+        .hero-text h2 .highlight {
+            color: #009EE4;
+            position: relative;
+        }
+        .hero-text h2 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 158, 228, 0.2);
+            border-radius: 4px;
+            z-index: -1;
         }
         .hero-text p {
             font-size: 1.15rem;
-            color: #3a5a7a;
-            margin: 28px 0 24px;
-            max-width: 540px;
-            font-weight: 300;
+            color: #4a4a6a;
+            margin: 24px 0 20px;
+            max-width: 500px;
+            font-weight: 400;
         }
+
         .hero-stats {
             display: flex;
-            gap: 40px;
-            margin-top: 28px;
-            opacity: 0;
-            animation: fadeUp 0.9s ease-out 0.3s forwards;
-        }
-        .stat-item span {
-            font-weight: 700;
-            font-size: 1.9rem;
-            color: #1a3a5a;
-            display: block;
+            gap: 48px;
+            margin-top: 32px;
         }
         .stat-item {
-            color: #4a6a8a;
-            font-size: 0.9rem;
+            text-align: left;
+        }
+        .stat-item .number {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #1a1a2e;
+            display: block;
+            line-height: 1;
+        }
+        .stat-item .number span {
+            color: #009EE4;
+        }
+        .stat-item .label {
+            color: #6a6a8a;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 4px;
         }
 
         .hero-image {
             flex: 0.8;
             background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
-            padding: 24px;
-            border: 1px solid rgba(74, 144, 217, 0.15);
-            box-shadow: 0 20px 40px -20px rgba(74, 144, 217, 0.2);
+            border-radius: 40px;
+            padding: 30px;
+            border: 2px solid rgba(0, 158, 228, 0.08);
             text-align: center;
-            transition: 0.3s;
-            opacity: 0;
-            animation: fadeRight 0.9s ease-out 0.2s forwards;
+            position: relative;
+            overflow: hidden;
         }
-        .hero-image:hover {
-            border-color: rgba(74, 144, 217, 0.3);
-            box-shadow: 0 20px 50px -15px rgba(74, 144, 217, 0.2);
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,158,228,0.05) 0%, transparent 70%);
+            border-radius: 50%;
         }
         .hero-image svg {
             max-width: 100%;
             height: auto;
+            position: relative;
+            z-index: 1;
         }
 
         /* ===== ОБЩИЕ ЗАГОЛОВКИ ===== */
         .section-title {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin: 60px 0 36px 0;
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin: 60px 0 8px 0;
             letter-spacing: -0.01em;
-            position: relative;
-            display: inline-block;
-            color: #0a2a4a;
+            color: #1a1a2e;
         }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 70px;
-            height: 3px;
-            background: linear-gradient(90deg, #4a90d9, #8ab3e0);
-            border-radius: 4px;
+        .section-subtitle {
+            color: #6a6a8a;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 32px;
         }
 
-        /* ===== АНИМИРУЕМЫЕ ЭЛЕМЕНТЫ ===== */
+        /* ===== УСЛУГИ ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin: 20px 0 20px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 32px 24px;
+            border: 2px solid rgba(0, 158, 228, 0.06);
+            transition: 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #009EE4, #6FE4FF);
+            transition: height 0.4s ease;
+            border-radius: 0 0 4px 0;
+        }
+        .service-card:hover::before {
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0, 158, 228, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 158, 228, 0.08);
+        }
+        .service-icon {
+            font-size: 2.6rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        .service-card p {
+            color: #4a4a6a;
+            line-height: 1.5;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        /* ===== ЦЕНЫ ===== */
+        .pricing-wrapper {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 48px 40px;
+            margin: 40px 0 30px;
+            border: 2px solid rgba(0, 158, 228, 0.06);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+        .price-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .price-card {
+            flex: 1 1 180px;
+            background: #f8faff;
+            border-radius: 24px;
+            padding: 28px 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .price-card:hover {
+            border-color: #009EE4;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 158, 228, 0.08);
+        }
+        .price-card.featured {
+            background: #009EE4;
+            color: #fff;
+            border-color: #009EE4;
+        }
+        .price-card.featured .duration,
+        .price-card.featured .price,
+        .price-card.featured .desc {
+            color: #fff;
+        }
+        .price-card .duration {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+        .price-card .price {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: #1a1a2e;
+            margin: 12px 0 4px;
+        }
+        .price-card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #6a6a8a;
+        }
+        .price-card.featured .price small {
+            color: rgba(255,255,255,0.7);
+        }
+        .price-card .desc {
+            color: #6a6a8a;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .subscription-note {
+            background: #f8faff;
+            border-radius: 20px;
+            margin-top: 28px;
+            padding: 20px 28px;
+            border: 2px solid rgba(0, 158, 228, 0.06);
+            color: #1a1a2e;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .subscription-note .tag {
+            background: #009EE4;
+            color: #fff;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .free-tag {
+            display: inline-block;
+            margin-top: 20px;
+            background: rgba(0, 158, 228, 0.08);
+            border: 2px solid rgba(0, 158, 228, 0.1);
+            border-radius: 60px;
+            padding: 10px 32px;
+            color: #009EE4;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* ===== ОБО МНЕ ===== */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            background: #ffffff;
+            border-radius: 40px;
+            margin: 40px 0;
+            padding: 48px 40px;
+            border: 2px solid rgba(0, 158, 228, 0.06);
+        }
+        .about-text {
+            flex: 1.5;
+        }
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+        }
+        .about-text p {
+            color: #4a4a6a;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        .feature-list li {
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #1a1a2e;
+            font-weight: 500;
+        }
+        .feature-list li::before {
+            content: "✦";
+            color: #009EE4;
+            font-size: 1.2rem;
+        }
+
+        .about-quote {
+            flex: 0.7;
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 2px solid rgba(0, 158, 228, 0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .about-quote .emoji-big {
+            font-size: 3.6rem;
+            margin-bottom: 12px;
+        }
+        .about-quote p {
+            font-weight: 600;
+            color: #1a1a2e;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        .about-quote .stamp {
+            margin-top: 16px;
+            background: rgba(0, 158, 228, 0.06);
+            border-radius: 60px;
+            padding: 8px 24px;
+            color: #009EE4;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        /* ===== CTA ===== */
+        .cta-block {
+            background: linear-gradient(145deg, #1a1a2e, #2a2a4e);
+            border-radius: 40px;
+            padding: 56px 48px;
+            margin: 60px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-block::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,158,228,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-block::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,181,61,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-block * {
+            position: relative;
+            z-index: 2;
+        }
+        .cta-block h3 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .cta-block .sub {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.7);
+            margin: 16px 0 10px;
+            font-weight: 400;
+        }
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 32px 0 20px;
+        }
+        .contact-btn {
+            background: rgba(255,255,255,0.08);
+            padding: 14px 38px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+            transition: 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-btn:hover {
+            background: #009EE4;
+            border-color: #009EE4;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 158, 228, 0.3);
+        }
+        .contact-btn.primary {
+            background: #009EE4;
+            border-color: #009EE4;
+        }
+        .contact-btn.primary:hover {
+            background: #0080C1;
+            border-color: #0080C1;
+            box-shadow: 0 12px 40px rgba(0, 158, 228, 0.4);
+        }
+
+        .cta-block .footnote {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px 0;
+            font-size: 0.8rem;
+            color: #6a6a8a;
+            border-top: 2px solid rgba(0, 158, 228, 0.06);
+        }
+
+        /* ===== АНИМАЦИИ ===== */
         .anim-fade-up {
             opacity: 0;
             transform: translateY(30px);
@@ -272,362 +613,60 @@
             transform: translateY(0);
         }
 
-        .anim-fade-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .anim-fade-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .anim-fade-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .anim-fade-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
         .anim-scale {
             opacity: 0;
             transform: scale(0.95);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         .anim-scale.visible {
             opacity: 1;
             transform: scale(1);
         }
 
-        /* ===== ЯКОРНЫЙ ОТСТУП ===== */
-        #services, #pricing, #about, #contact {
-            scroll-margin-top: 140px;
-        }
-
-        /* ===== УСЛУГИ ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 28px;
-            margin: 20px 0 20px;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 32px;
-            padding: 32px 24px;
-            border: 1px solid rgba(74, 144, 217, 0.08);
-            transition: 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            box-shadow: 0 8px 24px -12px rgba(74, 144, 217, 0.1);
-            background: #ffffff;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .service-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(74, 144, 217, 0.25);
-            box-shadow: 0 20px 40px -12px rgba(74, 144, 217, 0.15);
-        }
-        .service-icon {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #0a2a4a;
-        }
-        .service-card p {
-            color: #3a5a7a;
-            line-height: 1.5;
-            font-weight: 300;
-        }
-
-        /* ===== ЦЕНЫ ===== */
-        .pricing-wrapper {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
-            padding: 44px 36px;
-            margin: 40px 0 30px;
-            border: 1px solid rgba(74, 144, 217, 0.1);
-            box-shadow: 0 20px 40px -20px rgba(74, 144, 217, 0.1);
-        }
-        .price-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-            justify-content: center;
-            margin-top: 24px;
-        }
-        .price-card {
-            flex: 1 1 200px;
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 28px 20px;
-            text-align: center;
-            border: 1px solid rgba(74, 144, 217, 0.08);
-            transition: 0.3s;
-            box-shadow: 0 8px 18px -8px rgba(74, 144, 217, 0.05);
-            opacity: 0;
-            transform: scale(0.97);
-            transition: opacity 0.6s ease, transform 0.4s ease, box-shadow 0.3s;
-        }
-        .price-card.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .price-card:hover {
-            transform: scale(1.03);
-            border-color: rgba(74, 144, 217, 0.2);
-            box-shadow: 0 12px 30px -10px rgba(74, 144, 217, 0.15);
-        }
-        .price-card .duration {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #1a3a5a;
-        }
-        .price-card .price {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: #0a2a4a;
-            margin: 14px 0 8px;
-        }
-        .price-card .price small {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #6a8aaa;
-        }
-        .price-card .desc {
-            color: #4a6a8a;
-            font-size: 0.9rem;
-        }
-        .subscription-note {
-            background: rgba(74, 144, 217, 0.05);
-            border-radius: 24px;
-            margin-top: 28px;
-            padding: 20px 28px;
-            border: 1px solid rgba(74, 144, 217, 0.08);
-            color: #2a4a6a;
-            font-weight: 400;
-        }
-        .subscription-note strong {
-            color: #0a2a4a;
-            font-weight: 600;
-        }
-        .pricing-wrapper .free-tag {
-            display: inline-block;
-            margin-top: 18px;
-            background: rgba(74, 144, 217, 0.08);
-            border: 1px solid rgba(74, 144, 217, 0.15);
-            border-radius: 60px;
-            padding: 8px 28px;
-            color: #1a5a9a;
-            font-size: 0.9rem;
-        }
-
-        /* ===== ОБО МНЕ ===== */
-        .about-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 48px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            border-radius: 48px;
-            margin: 40px 0;
-            padding: 0 20px 20px 20px;
-            border: 1px solid rgba(74, 144, 217, 0.08);
-        }
-        .about-text {
-            flex: 1.5;
-            padding: 8px 0;
-        }
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #0a2a4a;
-        }
-        .about-text p {
-            color: #3a5a7a;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-        .feature-list {
-            list-style: none;
-            margin: 24px 0;
-        }
-        .feature-list li {
-            margin: 14px 0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            color: #2a4a6a;
-            font-weight: 300;
-        }
-        .feature-list li::before {
-            content: "▹";
-            color: #4a90d9;
-            font-size: 1.2rem;
-        }
-
-        .about-quote {
-            flex: 0.7;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 32px;
-            padding: 32px 24px;
-            text-align: center;
-            border: 1px solid rgba(74, 144, 217, 0.08);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .about-quote .emoji-big {
-            font-size: 4rem;
-            margin-bottom: 12px;
-        }
-        .about-quote p {
-            font-weight: 400;
-            color: #1a3a5a;
-            font-style: italic;
-        }
-        .about-quote .stamp {
-            margin-top: 16px;
-            background: rgba(74, 144, 217, 0.06);
-            border-radius: 60px;
-            padding: 8px 20px;
-            border: 1px solid rgba(74, 144, 217, 0.1);
-            color: #2a5a8a;
-            font-size: 0.85rem;
-        }
-
-        /* ===== CTA ===== */
-        .cta-block {
-            background: linear-gradient(145deg, #e6f0ff, #ffffff);
-            border-radius: 48px;
-            padding: 56px 48px;
-            margin: 60px 0 40px;
-            text-align: center;
-            border: 1px solid rgba(74, 144, 217, 0.1);
-            box-shadow: 0 20px 50px -20px rgba(74, 144, 217, 0.15);
-        }
-        .cta-block h3 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #0a2a4a;
-        }
-        .cta-block .sub {
-            font-size: 1.1rem;
-            color: #3a5a7a;
-            margin: 18px 0 10px;
-            font-weight: 300;
-        }
-        .contact-row {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            flex-wrap: wrap;
-            margin: 32px 0 20px;
-        }
-        .contact-btn {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 14px 38px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: #0a2a4a;
-            transition: 0.3s ease;
-            border: 1px solid rgba(74, 144, 217, 0.15);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(4px);
-        }
-        .contact-btn:hover {
-            background: #ffffff;
-            border-color: #4a90d9;
-            color: #0a2a4a;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px -10px rgba(74, 144, 217, 0.2);
-        }
-
-        .cta-block .footnote {
-            color: #5a7a9a;
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 32px 0;
-            font-size: 0.8rem;
-            color: #5a7a9a;
-            border-top: 1px solid rgba(74, 144, 217, 0.08);
-        }
-
-        /* ===== АНИМАЦИИ ===== */
-        @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeRight {
-            0% { opacity: 0; transform: translateX(40px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-
         /* ===== АДАПТИВ ===== */
         @media (max-width: 780px) {
-            .hero-text h2 { font-size: 2.5rem; }
+            .hero-text h2 { font-size: 2.4rem; }
             .container { padding: 0 20px; }
             .cta-block { padding: 36px 24px; }
+            .cta-block h3 { font-size: 2rem; }
             .price-grid { flex-direction: column; align-items: stretch; }
-            .header-top { flex-direction: column; align-items: stretch; gap: 12px; }
-            .contact-badge { justify-content: flex-start; flex-wrap: wrap; }
+            .header-inner { flex-direction: column; align-items: stretch; gap: 12px; }
             .nav-links { justify-content: center; }
-            .about-section { padding: 0 16px 16px 16px; }
-            #services, #pricing, #about, #contact {
-                scroll-margin-top: 160px;
-            }
-            .parallax-circle { display: none; } /* скрываем круги на мобилках */
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .about-section { padding: 28px 20px; }
+            .pricing-wrapper { padding: 28px 20px; }
+            .section-title { font-size: 2rem; }
+            .bg-accent-shape { display: none; }
+            .hero-image { padding: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h2 { font-size: 1.8rem; }
+            .stat-item .number { font-size: 1.6rem; }
+            .contact-btn { width: 100%; justify-content: center; }
+            .contact-row { flex-direction: column; align-items: stretch; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== ПАРАЛЛАКС-КРУГИ (фон) ===== -->
-<div class="parallax-circle circle1" data-speed="0.03"></div>
-<div class="parallax-circle circle2" data-speed="0.05"></div>
-<div class="parallax-circle circle3" data-speed="0.04"></div>
+<!-- ===== ДЕКОРАТИВНЫЙ ФОН ===== -->
+<div class="bg-accent-shape shape1"></div>
+<div class="bg-accent-shape shape2"></div>
+<div class="bg-accent-shape shape3"></div>
 
 <!-- ===== ШАПКА ===== -->
 <header class="header" id="header">
     <div class="container header-inner">
-        <div class="header-top">
-            <div class="logo">
-                <h1>Игнатьев Олег</h1>
-                <p>репетитор по английскому языку</p>
-            </div>
-            <div class="contact-badge">
-                <a href="https://t.me/Choso85" target="_blank">📱 @Choso85</a>
-                <a href="tel:+79991736786">📞 +7 999 173-67-86</a>
-            </div>
+        <div class="logo">
+            <h1>Игнатьев <span>Олег</span></h1>
+            <p>Репетитор по английскому языку</p>
         </div>
         <div class="nav-links">
-            <a href="#services">Что я делаю</a>
-            <a href="#pricing">Стоимость</a>
+            <a href="#services">Услуги</a>
+            <a href="#pricing">Цены</a>
             <a href="#about">Обо мне</a>
-            <a href="#contact">Контакты</a>
+            <a href="#contact" class="header-cta">Начать учиться</a>
         </div>
     </div>
 </header>
@@ -637,22 +676,37 @@
     <section class="hero">
         <div class="hero-grid">
             <div class="hero-text">
-                <h2>Английский,<br />который заговорит</h2>
-                <p>Помогаю преодолеть языковой барьер, подготовиться к ОГЭ/ЕГЭ и просто полюбить английский. Индивидуальный подход, интерактивные онлайн-занятия.</p>
+                <div class="badge">🚀 Онлайн-обучение</div>
+                <h2>
+                    Английский, <br />
+                    <span class="highlight">который заговорит</span>
+                </h2>
+                <div class="brand-line"></div>
+                <p>Преодолеваем языковой барьер, готовим к ОГЭ/ЕГЭ и просто влюбляем в английский. Индивидуальный подход, интерактивные занятия.</p>
                 <div class="hero-stats" id="statsBlock">
-                    <div class="stat-item"><span class="counter" data-target="7">0</span>лет изучения</div>
-                    <div class="stat-item"><span class="counter" data-target="2">0</span>года преподавания</div>
-                    <div class="stat-item"><span class="counter" data-target="20">0</span>+ учеников</div>
+                    <div class="stat-item">
+                        <span class="number"><span class="counter" data-target="7">0</span>+</span>
+                        <div class="label">лет изучения</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number"><span class="counter" data-target="2">0</span>+</span>
+                        <div class="label">года преподавания</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number"><span class="counter" data-target="20">0</span>+</span>
+                        <div class="label">учеников</div>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
-                <svg width="260" height="220" viewBox="0 0 280 240" fill="none">
-                    <rect x="40" y="50" width="80" height="60" rx="14" fill="rgba(74,144,217,0.05)" stroke="rgba(74,144,217,0.15)" stroke-width="1.5"/>
-                    <rect x="140" y="80" width="80" height="60" rx="14" fill="rgba(74,144,217,0.03)" stroke="rgba(74,144,217,0.10)" stroke-width="1.5"/>
-                    <path d="M120 80 L140 100 L120 120" stroke="rgba(74,144,217,0.4)" stroke-width="2.5" fill="none"/>
-                    <circle cx="195" cy="50" r="18" fill="rgba(74,144,217,0.05)" stroke="rgba(74,144,217,0.15)" stroke-width="1.5"/>
-                    <text x="40" y="192" font-size="14" fill="#4a6a8a">📚 A1–C2</text>
-                    <text x="150" y="192" font-size="14" fill="#4a6a8a">🎓 ОГЭ/ЕГЭ</text>
+                <svg width="280" height="240" viewBox="0 0 280 240" fill="none">
+                    <rect x="30" y="40" width="90" height="70" rx="16" fill="rgba(0,158,228,0.04)" stroke="rgba(0,158,228,0.12)" stroke-width="2"/>
+                    <rect x="140" y="70" width="90" height="70" rx="16" fill="rgba(0,158,228,0.02)" stroke="rgba(0,158,228,0.08)" stroke-width="2"/>
+                    <path d="M110 70 L135 95 L110 120" stroke="#009EE4" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="200" cy="40" r="22" fill="rgba(0,158,228,0.04)" stroke="rgba(0,158,228,0.12)" stroke-width="2"/>
+                    <text x="30" y="192" font-size="15" fill="#1a1a2e" font-weight="600">📚 A1–C2</text>
+                    <text x="150" y="192" font-size="15" fill="#1a1a2e" font-weight="600">🎓 ОГЭ/ЕГЭ</text>
+                    <line x1="30" y1="210" x2="250" y2="210" stroke="rgba(0,158,228,0.08)" stroke-width="2" stroke-dasharray="6 6"/>
                 </svg>
             </div>
         </div>
@@ -660,27 +714,29 @@
 
     <!-- ===== УСЛУГИ ===== -->
     <div id="services">
-        <h2 class="section-title anim-fade-left">Что я делаю</h2>
+        <h2 class="section-title anim-fade-up">Что я делаю</h2>
+        <p class="section-subtitle anim-fade-up">Помогаю достичь цели — быстрее, проще, эффективнее</p>
+        <div class="brand-line"></div>
         <div class="services-grid" id="servicesGrid">
-            <div class="service-card">
+            <div class="service-card anim-scale">
                 <div class="service-icon">📘</div>
                 <h3>Подготовка к ОГЭ/ЕГЭ</h3>
-                <p>Разбор всех разделов экзамена, стратегии выполнения, устранение пробелов, работа с типичными ошибками.</p>
+                <p>Разбор всех разделов экзамена, стратегии выполнения, устранение пробелов.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card anim-scale">
                 <div class="service-icon">🗣️</div>
                 <h3>Разговорный английский</h3>
-                <p>Преодоление языкового барьера, постановка произношения, расширение словарного запаса через живые диалоги.</p>
+                <p>Преодоление языкового барьера, постановка произношения, живые диалоги.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card anim-scale">
                 <div class="service-icon">📈</div>
                 <h3>Повышение успеваемости</h3>
-                <p>Помощь со школьной программой, домашними заданиями, объяснение сложных тем простым языком.</p>
+                <p>Помощь со школьной программой, домашними заданиями, объяснение сложных тем.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card anim-scale">
                 <div class="service-icon">💼</div>
                 <h3>Бизнес-английский</h3>
-                <p>Деловая лексика, переписка, презентации, переговоры — для работы и карьерного роста.</p>
+                <p>Деловая лексика, переписка, презентации, переговоры — для карьерного роста.</p>
             </div>
         </div>
     </div>
@@ -688,36 +744,40 @@
     <!-- ===== ЦЕНЫ ===== -->
     <div id="pricing">
         <div class="pricing-wrapper">
-            <h2 class="section-title anim-fade-left" style="margin-top:0;">Стоимость и форматы</h2>
+            <h2 class="section-title anim-fade-up" style="margin-top:0;">Стоимость и форматы</h2>
+            <p class="section-subtitle anim-fade-up">Выберите удобный формат занятий</p>
+            <div class="brand-line"></div>
             <div class="price-grid" id="priceGrid">
-                <div class="price-card">
+                <div class="price-card anim-scale">
                     <div class="duration">60 мин</div>
                     <div class="price">1 400 ₽</div>
                     <div class="desc">стандартное занятие</div>
                 </div>
-                <div class="price-card">
+                <div class="price-card featured anim-scale">
                     <div class="duration">90 мин</div>
                     <div class="price">2 100 ₽</div>
-                    <div class="desc">углублённая работа</div>
+                    <div class="desc">⭐ углублённая работа</div>
                 </div>
-                <div class="price-card">
+                <div class="price-card anim-scale">
                     <div class="duration">120 мин</div>
                     <div class="price">2 800 ₽</div>
                     <div class="desc">интенсив + разбор</div>
                 </div>
             </div>
             <div class="subscription-note anim-fade-up">
-                💡 Абонемент на месяц (4 занятия) — скидка 150₽/60мин: <strong>1250₽ / 1875₽ / 2500₽</strong> за урок. Предоплата за разовое занятие или абонемент.
+                <span class="tag">Экономия</span>
+                Абонемент на месяц (4 занятия) — скидка 150₽/60мин: <strong>1250₽ / 1875₽ / 2500₽</strong> за урок
             </div>
-            <div class="free-tag anim-scale">🎁 Пробный урок — бесплатно (30–40 мин)</div>
+            <div class="free-tag anim-scale">🎁 Пробный урок — бесплатно 30–40 мин</div>
         </div>
     </div>
 
-    <!-- ===== ОБО МНЕ ===== -->
+    <!-- ===== ОБО МНЕ (исправленное направление) ===== -->
     <div id="about" class="about-section">
-        <div class="about-text anim-fade-right">
-            <h3>👋 Олег Игнатьев — ваш репетитор</h3>
-            <p>Я изучаю английский уже 7 лет, из них 2 года преподаю. Образование – ДВФУ, направление «Технологии анализа цифрового следа». Это дало мне аналитический склад ума, который я применяю в обучении: мы не зазубриваем правила, а понимаем логику языка.</p>
+        <div class="about-text anim-fade-up">
+            <h3>👋 Олег Игнатьев</h3>
+            <div class="brand-line"></div>
+            <p>Я изучаю английский уже 7 лет, из них 2 года преподаю. Образование — ДВФУ, направление <strong>«Цифровые медиатехнологии»</strong>. Это дало мне аналитический склад ума, который я применяю в обучении: мы не зазубриваем правила, а понимаем логику языка.</p>
             <ul class="feature-list">
                 <li>Работаю со школьниками (5–11 классы) и взрослыми</li>
                 <li>Готовлю к ОГЭ, ЕГЭ, международным экзаменам</li>
@@ -726,7 +786,7 @@
             </ul>
             <p style="margin-top:12px;">За 2 года я подготовил более 20 учеников: от тех, кто не знал алфавита, до тех, кто сдал ЕГЭ на 90+ баллов.</p>
         </div>
-        <div class="about-quote anim-fade-left">
+        <div class="about-quote anim-scale">
             <div class="emoji-big">🌍</div>
             <p>«Английский — это ключ к миру. Я помогу вам подобрать нужный ключ»</p>
             <div class="stamp">⭐ 20+ довольных учеников</div>
@@ -736,47 +796,44 @@
     <!-- ===== КОНТАКТЫ ===== -->
     <div id="contact" class="cta-block anim-scale">
         <h3 class="anim-fade-up">Начнём? 🚀</h3>
-        <p class="sub anim-fade-up" style="transition-delay: 0.15s;">Напишите в Telegram или позвоните — я отвечу на все вопросы и договорюсь о бесплатном пробном уроке.</p>
-        <div class="contact-row anim-fade-up" style="transition-delay: 0.3s;">
-            <a href="https://t.me/Choso85" target="_blank" class="contact-btn">📩 Telegram: @Choso85</a>
+        <p class="sub anim-fade-up" style="transition-delay: 0.1s;">Напишите в Telegram или позвоните — я отвечу на все вопросы и договорюсь о бесплатном пробном уроке.</p>
+        <div class="contact-row anim-fade-up" style="transition-delay: 0.2s;">
+            <a href="https://t.me/Choso85" target="_blank" class="contact-btn primary">📩 Telegram: @Choso85</a>
             <a href="tel:+79991736786" class="contact-btn">📞 +7 999 173-67-86</a>
         </div>
-        <p class="footnote anim-fade-up" style="transition-delay: 0.45s;">В первом сообщении укажите: возраст/класс, текущий уровень и цель занятий. Отвечу в течение часа!</p>
+        <p class="footnote anim-fade-up" style="transition-delay: 0.3s;">В первом сообщении укажите: возраст/класс, текущий уровень и цель занятий.</p>
     </div>
 </main>
 
 <footer>
     <div class="container">
         <p>Игнатьев Олег Элуардович — репетитор по английскому языку | ДВФУ | 2025</p>
-        <p style="margin-top:6px;">📍 Занятия онлайн по всему миру | Предоплата / абонементы</p>
+        <p style="margin-top:6px; color:#8a8aaa;">📍 Занятия онлайн по всему миру | Предоплата / абонементы</p>
     </div>
 </footer>
 
 <!-- ===== JAVASCRIPT ===== -->
 <script>
     (function() {
-        // --------------------------------------------------------------
-        // 1. АНИМИРОВАННЫЕ СЧЁТЧИКИ (с использованием requestAnimationFrame)
-        // --------------------------------------------------------------
+        // ===== АНИМИРОВАННЫЕ СЧЁТЧИКИ =====
         const counters = document.querySelectorAll('.counter');
         let countersAnimated = false;
 
         function animateCounter(el) {
             const target = parseInt(el.getAttribute('data-target'));
-            const duration = 1500; // мс
+            const duration = 1500;
             const startTime = performance.now();
 
             function update(currentTime) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                // функция плавности (easeOutQuad)
                 const eased = 1 - Math.pow(1 - progress, 2);
                 const current = Math.round(eased * target);
                 el.textContent = current;
                 if (progress < 1) {
                     requestAnimationFrame(update);
                 } else {
-                    el.textContent = target + (target === 20 ? '+' : '');
+                    el.textContent = target + '+';
                 }
             }
             requestAnimationFrame(update);
@@ -790,7 +847,6 @@
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
             if (rect.top < windowHeight - 100 && rect.bottom > 0) {
                 counters.forEach(counter => {
-                    // сбрасываем на 0, если ещё не анимировали
                     if (!counter.dataset.animated) {
                         counter.dataset.animated = 'true';
                         animateCounter(counter);
@@ -800,29 +856,10 @@
             }
         }
 
-        // запускаем счётчики при скролле
         window.addEventListener('scroll', startCounters);
         window.addEventListener('load', startCounters);
 
-        // --------------------------------------------------------------
-        // 2. ПАРАЛЛАКС ФОНОВЫХ КРУГОВ (движение за мышью)
-        // --------------------------------------------------------------
-        const circles = document.querySelectorAll('.parallax-circle');
-
-        document.addEventListener('mousemove', (e) => {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            circles.forEach(circle => {
-                const speed = parseFloat(circle.getAttribute('data-speed')) || 0.03;
-                const moveX = (mouseX - 0.5) * 2 * speed * 100;
-                const moveY = (mouseY - 0.5) * 2 * speed * 100;
-                circle.style.transform = `translate(${moveX}px, ${moveY}px)`;
-            });
-        });
-
-        // --------------------------------------------------------------
-        // 3. ПЛАВНЫЙ СКРОЛЛ (с учётом высоты шапки)
-        // --------------------------------------------------------------
+        // ===== ПЛАВНЫЙ СКРОЛЛ =====
         document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -838,22 +875,13 @@
             });
         });
 
-        // также обрабатываем клики по кнопкам в CTA, если там есть якоря (уже есть)
-        // дополнительно: если ссылка ведёт на внешний ресурс, не трогаем
-
-        // --------------------------------------------------------------
-        // 4. АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ (Intersection Observer)
-        //     (уже была, но добавим для счётчиков повторный запуск)
-        // --------------------------------------------------------------
-        const animElements = document.querySelectorAll('.anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale');
-        const serviceCards = document.querySelectorAll('.service-card');
-        const priceCards = document.querySelectorAll('.price-card');
+        // ===== АНИМАЦИЯ ПОЯВЛЕНИЯ (Intersection Observer) =====
+        const animElements = document.querySelectorAll('.anim-fade-up, .anim-scale');
 
         function isVisible(el) {
             const rect = el.getBoundingClientRect();
             const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const threshold = 80;
-            return rect.top <= windowHeight - threshold && rect.bottom >= 0;
+            return rect.top <= windowHeight - 80 && rect.bottom >= 0;
         }
 
         function activateAnimations() {
@@ -862,17 +890,12 @@
                     el.classList.add('visible');
                 }
             });
-            serviceCards.forEach(card => {
+            // дополнительно для карточек услуг и цен
+            document.querySelectorAll('.service-card, .price-card').forEach(card => {
                 if (isVisible(card) && !card.classList.contains('visible')) {
                     card.classList.add('visible');
                 }
             });
-            priceCards.forEach(card => {
-                if (isVisible(card) && !card.classList.contains('visible')) {
-                    card.classList.add('visible');
-                }
-            });
-            // повторно проверяем счётчики, если ещё не запущены
             startCounters();
         }
 
@@ -881,9 +904,7 @@
         window.addEventListener('resize', () => requestAnimationFrame(activateAnimations));
         setTimeout(activateAnimations, 100);
 
-        // --------------------------------------------------------------
-        // 5. ФИКСАЦИЯ ШАПКИ (дополнительный эффект)
-        // --------------------------------------------------------------
+        // ===== ФИКСАЦИЯ ШАПКИ =====
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 60) {
